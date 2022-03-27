@@ -15,10 +15,12 @@ import SearchPage from "./components/SearchPage/SearchPage";
 import MyFlightsPage from "./components/MyFlightsPage/MyFlightsPage";
 import PastFlightsPage from "./components/PastFlightsPage/PastFlightsPage";
 import AboutPage from "./components/AboutPage/AboutPage";
+import Header from "./components/Header/Header";
 
 function App() {
   return (
     <div className="app">
+      <Header />
       <Switch>
         <Route path="/" exact>
           <Redirect to="/home" />

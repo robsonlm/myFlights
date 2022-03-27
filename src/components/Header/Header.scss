@@ -1,0 +1,64 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography";
+
+//Default - Mobile phone style
+.header {
+  background: transparent;
+  position: relative;
+
+  &__logo {
+    position: absolute;
+    height: 3.75rem;
+    left: 5.438rem;
+    top: 2.5rem;
+  }
+
+  &__desktop {
+    display: none;
+  }
+}
+
+//Tablet style
+@include medium {
+  .header {
+    &__mobile {
+      display: none;
+    }
+
+    &__desktop {
+      display: flex;
+      position: absolute;
+      justify-content: space-between;
+      right: 2.938rem;
+      top: 3.5rem;
+      width: 25rem;
+      align-items: center;
+    }
+
+    &__link {
+      color: $color-off-white;
+      @include typo-h5;
+      //text-shadow: 0 0 5px black;
+      justify-items: center;
+      &:hover {
+        font-weight: 800;
+      }
+    }
+  }
+
+  #signin {
+    margin-left: 4rem;
+    padding: 0.125rem 1.25rem;
+    border: white solid 1.5px;
+    border-radius: 20px;
+    background: rgba($color: #ffffff, $alpha: 0.2);
+  }
+
+  #signup {
+    padding: 0.125rem 1.25rem;
+    border-radius: 20px;
+    background: rgba($color: #ffffff, $alpha: 0.5);
+  }
+}

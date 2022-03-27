@@ -1,0 +1,13 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography";
+
+.home {
+  background-image: url("../../assets/images//Martina-Crepulja-moss-and-fog-6.webp");
+  max-width: 100vmax;
+  min-height: 100vmax;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left;
+}
