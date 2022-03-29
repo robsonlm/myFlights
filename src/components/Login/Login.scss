@@ -3,7 +3,7 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography";
 
-.profile {
+.login {
   &__wrapper {
     height: 100vh;
     width: 100vw;
@@ -11,13 +11,19 @@
 
   &__left {
     display: flex;
-    height: 16%;
-    background-color: $color-accent-1;
+    height: 50%;
+    background-color: $color-accent-3;
     align-items: flex-end;
   }
 
+  &__image {
+    width: 100%;
+    max-height: 17rem;
+    padding-bottom: $pad-margin-between;
+  }
+
   &__right {
-    height: 80%;
+    height: 50%;
     display: flex;
     flex-direction: column;
     padding: $pad-margin-between $pad-margin;
@@ -48,37 +54,49 @@
       }
     }
 
+    &-password-reset {
+      @include typo-linkxs;
+      padding-bottom: $pad-margin;
+      align-self: flex-end;
+      color: $color-primary;
+    }
+
     &-button {
       height: 2.25rem;
       border-radius: 10px;
       border: none;
       background-color: $color-primary;
-      margin: $pad-margin-between 0;
+      margin-bottom: $pad-margin-between;
       color: $color-off-white;
       @include typo-h6;
+    }
+  }
+  &__google-button {
+    display: flex;
+    height: 2.25rem;
+    border-radius: 10px;
+    border: 2px $color-line solid;
+    background-color: $color-off-white;
+    margin-bottom: $pad-margin-between;
+    color: $color-label;
+    @include typo-h6;
+    align-items: center;
+    justify-content: center;
 
-      &-logout {
-        height: 2.25rem;
-        border-radius: 10px;
-        border: none;
-        background-color: $color-label;
-        margin: $pad-margin-between 0;
-        color: $color-off-white;
-        @include typo-h6;
-      }
+    &-image {
+      padding-right: $pad-margin-between;
     }
   }
 }
 
 @include medium {
-  .profile {
+  .login {
     &__wrapper {
       display: flex;
-      flex-direction: column;
     }
     &__left {
       display: flex;
-      height: 20%;
+      height: 100%;
       min-width: 40%;
       background-color: $color-accent-3;
       align-items: center;

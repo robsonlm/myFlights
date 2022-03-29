@@ -46,6 +46,29 @@
         font-weight: 800;
       }
     }
+
+    &__signup-link {
+      position: absolute;
+      width: 18rem;
+      right: 0rem;
+      @include typo-linkxs;
+      color: $color-label;
+
+      &-color {
+        color: $color-secondary;
+      }
+    }
+    &__login-link {
+      position: absolute;
+      width: 18rem;
+      right: 0rem;
+      @include typo-linkxs;
+      color: $color-label;
+
+      &-color {
+        color: $color-primary;
+      }
+    }
   }
 
   #signin {
