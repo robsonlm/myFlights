@@ -48,7 +48,7 @@ function App() {
         <Route
           path="/search"
           exact
-          render={(renderProps) => <SearchPage {...renderProps} />}
+          render={(renderProps) => <SearchPage user={user} {...renderProps} />}
         />
         <Route
           path="/myflights"

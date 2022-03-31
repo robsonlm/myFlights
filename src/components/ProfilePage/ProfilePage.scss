@@ -11,13 +11,13 @@
 
   &__left {
     display: flex;
-    height: 16%;
+    height: 9rem;
     background-color: $color-accent-1;
     align-items: flex-end;
   }
 
   &__right {
-    height: 80%;
+    height: auto;
     display: flex;
     flex-direction: column;
     padding: $pad-margin-between $pad-margin;
@@ -75,31 +75,32 @@
     &__wrapper {
       display: flex;
       flex-direction: column;
+      justify-content: center;
     }
+
     &__left {
       display: flex;
-      height: 20%;
-      min-width: 40%;
-      background-color: $color-accent-3;
+      height: 9rem;
+      min-height: 5rem;
+      background-color: $color-accent-1;
       align-items: center;
     }
 
     &__right {
-      height: 100%;
-      width: 60%;
+      height: 90%;
+      min-height: 5%;
+      width: 100%;
       display: flex;
       flex-direction: column;
       padding: $pad-margin-between $pad-margin;
       justify-content: center;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     &__form {
-      width: 65%;
-    }
-
-    &__google-button {
-      width: 65%;
+      width: 20rem;
+      height: 25rem;
     }
   }
 }

@@ -90,10 +90,13 @@ const ProfilePage = ({ user }) => {
                 >
                   Update
                 </button>
+                <button
+                  className="profile__form-button-logout"
+                  onClick={logout}
+                >
+                  logout
+                </button>
               </form>
-              <button className="profile__form-button-logout" onClick={logout}>
-                logout
-              </button>
               {/* <button onClick={() => logout(registerEmail)}>
                 reset password
               </button> */}

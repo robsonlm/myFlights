@@ -1,0 +1,158 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/colours" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/resets" as *;
+
+.inventory-modal {
+  display: flex;
+  font-family: "Titillium";
+
+  &__title {
+    font-weight: 600;
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    padding: 0rem 1rem;
+    color: black;
+  }
+  &__content-container {
+    padding: 1rem;
+    height: 100vh;
+  }
+  &__body {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 26px;
+    padding: 1rem;
+    color: black;
+  }
+  &__footer {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    bottom: 1%;
+  }
+}
+
+@include media-tablet {
+  .inventory-modal {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    background-color: rgba(#13182c, 0.7);
+    display: flex;
+    &__content-container {
+      margin: 2px;
+      position: absolute;
+      background-color: #ffffff;
+      border-radius: 3px;
+      left: 6.25%;
+      right: 6.25%;
+      top: 18.07%;
+      bottom: 56.35%;
+      padding: 1rem;
+      height: 40vh;
+    }
+    &__body {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 26px;
+    }
+    &__footer {
+      position: absolute;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      bottom: 10%;
+      right: 4rem;
+    }
+  }
+
+  @include media-desktop {
+    .inventory-modal {
+      display: flex;
+      background-color: rgba(#13182c, 0.7);
+
+      &__content-container {
+        position: absolute;
+        left: 23.75%;
+        right: 23.75%;
+        top: 20%;
+        bottom: 51.68%;
+        background-color: #ffffff;
+        border-radius: 3px;
+      }
+      &__content-container {
+        padding: 1rem;
+        left: 23.75%;
+        right: 23.75%;
+        top: 20%;
+        bottom: 51.68%;
+      }
+      &__body {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 26px;
+        padding: 1rem;
+      }
+      &__footer {
+        position: absolute;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        bottom: 10%;
+        right: 4rem;
+      }
+    }
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  padding: 8px 63px;
+  border: 1px solid #bdc5d5;
+  box-sizing: border-box;
+  border-radius: 20px;
+
+  &__bin {
+    background-color: white;
+    border: none;
+  }
+  &__x-container {
+    justify-content: flex-end;
+    width: 100%;
+    display: flex;
+  }
+  &__x {
+    position: relative;
+    justify-content: flex-end;
+    background-color: white;
+    border: none;
+  }
+
+  &__cancel {
+    color: #13182c;
+    background-color: white;
+  }
+  &__delete {
+    color: white;
+    background-color: #c94515;
+    z-index: 2;
+  }
+}
+
+@include media-tablet {
+  .button {
+    padding: 6px 16px;
+    margin: 1rem;
+  }
+}

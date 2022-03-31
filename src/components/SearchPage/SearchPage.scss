@@ -1,0 +1,212 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography";
+
+// table,
+// td,
+// th {
+//   border-top: 1px solid;
+//   border-bottom: 1px solid;
+//   border-collapse: collapse;
+// }
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 350px;
+}
+table tr th,
+table tr td {
+  // border-right: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
+  padding: 5px;
+}
+
+table tr th {
+  background: $color-accent-2;
+  text-align: left;
+  //border-top: solid 1px #bbb;
+}
+
+/* top-left border-radius */
+table tr:first-child th:first-child {
+  border-top-left-radius: 6px;
+}
+
+/* top-right border-radius */
+table tr:first-child th:last-child {
+  border-top-right-radius: 6px;
+}
+
+/* bottom-left border-radius */
+table tr:last-child td:first-child {
+  border-bottom-left-radius: 6px;
+}
+
+/* bottom-right border-radius */
+table tr:last-child td:last-child {
+  border-bottom-right-radius: 6px;
+}
+
+.search {
+  &__wrapper {
+    height: 100vh;
+    width: 100vw;
+  }
+
+  &__left {
+    display: flex;
+    height: 9rem;
+    background-color: $color-accent-2;
+    align-items: flex-end;
+  }
+
+  &__right {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: $pad-margin-between $pad-margin;
+  }
+
+  &__form {
+    position: relative;
+    background-color: white;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  &__select {
+    border: 0 solid;
+    height: 3rem;
+    border-radius: 6px;
+    background-color: white;
+    width: 10rem;
+    padding: 0.5rem;
+  }
+
+  &__input {
+    border: 0 solid;
+    height: 3rem;
+    border-radius: 6px;
+    padding: 1rem;
+    background-color: $color-input-background;
+    margin-bottom: $pad-margin-between;
+    width: 100%;
+
+    &-box-origin {
+      position: absolute;
+
+      max-height: 10rem;
+      overflow: scroll;
+      @include typo-linkxs;
+      background-color: $color-input-background;
+      top: 4.8rem;
+      width: 100%;
+    }
+
+    &-box-destination {
+      position: absolute;
+
+      max-height: 10rem;
+      overflow: scroll;
+      @include typo-linkxs;
+      background-color: $color-input-background;
+      top: 8.5rem;
+      width: 100%;
+    }
+
+    &-option {
+      @include typo-linkxs;
+      background-color: $color-input-background;
+
+      &:hover {
+        background-color: $color-placeholder;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__button {
+    border: 0 solid;
+    height: 3rem;
+    border-radius: 6px;
+    background-color: $color-primary;
+    color: white;
+    font-weight: 400;
+    width: 100%;
+    margin-bottom: $pad-margin-between;
+
+    &:hover {
+      background-color: $color-accent-1;
+    }
+  }
+
+  &__results {
+    max-height: 40rem;
+    width: 100%;
+    overflow: scroll;
+
+    &-table {
+      width: 5rem;
+    }
+
+    &-title {
+      @include typo-h6;
+      color: $color-off-white;
+    }
+
+    &-line {
+      background-color: $color-input-background;
+      border: 1px solid;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $color-accent-5;
+      }
+    }
+
+    &-text {
+      @include typo-linkxs;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+  }
+}
+
+@include medium {
+  .search {
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &__left {
+      display: flex;
+      height: 9rem;
+      min-height: 5rem;
+      background-color: $color-accent-2;
+      align-items: center;
+    }
+
+    &__right {
+      height: 90%;
+      min-height: 5%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: $pad-margin-between $pad-margin;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    &__form {
+      width: 20rem;
+      height: 25rem;
+    }
+  }
+}
