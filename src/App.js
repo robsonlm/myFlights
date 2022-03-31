@@ -20,6 +20,7 @@ import Signup from "./components/Signup/Signup";
 import { auth } from "./utils/firebaseInit";
 import { onAuthStateChanged } from "firebase/auth";
 import Login from "./components/Login/Login";
+import SearchModal from "./components/SearchModal/SearchModal";
 
 function App() {
   const [user, setUser] = useState({});
@@ -39,6 +40,11 @@ function App() {
           path="/home"
           exact
           render={(renderProps) => <HomePage user={user} {...renderProps} />}
+        />
+        <Route
+          path="/modal"
+          exact
+          render={(renderProps) => <SearchModal user={user} {...renderProps} />}
         />
         <Route
           path="/profile"

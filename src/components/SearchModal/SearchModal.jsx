@@ -1,59 +1,66 @@
 import React from "react";
-import "./InventoryModal.scss";
-import Close from "../../assets/icons/close-24px.svg";
-import axios from "axios";
-import { DELETE_INVENTORY_API_URL } from "../../api/endpoints";
+import "./SearchModal.scss";
+import { handleNew } from "../../utils/FirebaseFunctions";
 
-const InventoryModal = ({ closeModal, inventoryName, inventoryId }) => {
-  const handleDelete = (id) => {
-    axios
-      .delete(DELETE_INVENTORY_API_URL(id))
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((e) => {
-        console.error(e);
-        alert("something went wrong");
-      });
+const SearchModal = ({ closeModal, flight, departureDate, user }) => {
+  function ChangeFormateDate(oldDate) {
+    return oldDate.toString().split("-").reverse().join("/");
+  }
+
+  console.log(user);
+
+  const handleAdd = async () => {
+    const payload = {
+      uid: user.uid,
+      fight_number: flight.flight.number,
+      dep_iata: flight.departure.iata,
+      arr_iata: flight.arrival.iata,
+      flight_date: departureDate,
+      flight: flight,
+      flight_name: "",
+      flight_labels: {},
+      shared_with: [],
+    };
+    await handleNew("flights", payload);
     closeModal(false);
-    window.location.reload(true);
+    setTimeout(() => {
+      window.location = `myflights`;
+    }, 5000);
   };
 
   return (
-    <div className="inventory-modal">
-      <div className="modal__content-container">
-        <div className="button__x-container">
-          <button className="button__x" onClick={() => closeModal(false)}>
-            <img src={Close} alt="" />
-          </button>
-        </div>
-        <div className="modal__header">
-          <div className="modal__title">
-            {`
-            Delete ${inventoryName} from inventory list?`}
-          </div>
-        </div>
-        <div className="modal__content">
-          <div className="modal__body">
-            <span>Please confirm that you'd like to delete the </span>
-            {inventoryName}
-            <span>
-              {" "}
-              from the list of inventory. You wont be able to undo this action.
-            </span>
-          </div>
-          <div className="modal__footer">
+    <div className="search-modal">
+      <div className="search-modal__container">
+        <p className="search-modal__close" onClick={() => closeModal(false)}>
+          &times;
+        </p>
+        <div className="search-modal__body">
+          <h3 className="search-modal__title">Add to your myFlights list?</h3>
+          <p className="search-modal__label">Flight - Airline:</p>
+          <p className="search-modal__text">
+            {flight.airline.iata}
+            {flight.flight.number} - {flight.airline.name}
+          </p>
+          <p className="search-modal__label">Origin:</p>
+          <p className="search-modal__text">{flight.departure.airport}</p>
+          <p className="search-modal__label">Destination:</p>
+          <p className="search-modal__text">{flight.arrival.airport}</p>
+          <p className="search-modal__label">Date:</p>
+          <p className="search-modal__text">
+            {`${ChangeFormateDate(departureDate)}`}
+          </p>
+          <div className="search-modal__button">
             <button
-              className="button button__cancel"
+              className="search-modal__button-cancel"
               onClick={() => closeModal(false)}
             >
               Cancel
             </button>
             <button
-              className="button button__delete"
-              onClick={() => handleDelete(inventoryId)}
+              className="search-modal__button-add"
+              onClick={() => handleAdd()}
             >
-              Delete
+              Add to myFlights
             </button>
           </div>
         </div>
@@ -62,4 +69,4 @@ const InventoryModal = ({ closeModal, inventoryName, inventoryId }) => {
   );
 };
 
-export default InventoryModal;
+export default SearchModal;

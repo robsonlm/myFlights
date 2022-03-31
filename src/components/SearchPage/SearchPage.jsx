@@ -10,6 +10,7 @@ import {
   GET_AUTOCOMPLETE_API_URL,
   GET_FUTUREFLIGHT_API_URL,
 } from "../../api/endpoint";
+import SearchModal from "../SearchModal/SearchModal";
 
 const SearchPage = ({ user }) => {
   const [origin, setOrigin] = useState([]);
@@ -19,6 +20,8 @@ const SearchPage = ({ user }) => {
   const [flight, setFlight] = useState("");
   const [departureDate, setDepartureDate] = useState("");
   const [resultList, setResultList] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [selectedFlight, setSelectedFlight] = useState(false);
 
   const loadOrigins = async (origin) => {
     setTextOrigin(origin);
@@ -50,8 +53,22 @@ const SearchPage = ({ user }) => {
     setResultList(response.data.data);
   };
 
+  let showModal = <></>;
+  if (modal) {
+    console.log(selectedFlight);
+    showModal = (
+      <SearchModal
+        flight={selectedFlight}
+        closeModal={setModal}
+        user={user}
+        departureDate={departureDate}
+      />
+    );
+  }
+
   return (
     <div>
+      {showModal}
       {user?.uid ? (
         <section className="search">
           <ToastContainer theme="colored" />
@@ -61,7 +78,6 @@ const SearchPage = ({ user }) => {
               {!resultList[0] && (
                 <form
                   className="search__form"
-                  //onSubmit={this.getMeal}
                   onSubmit={(event) => {
                     searchFlight(
                       textOrigin,
@@ -71,7 +87,6 @@ const SearchPage = ({ user }) => {
                     );
                   }}
                 >
-                  {/* <label htmlFor="maxcalories">Calories</label> */}
                   <label className="profile__form-label" htmlFor="firstName">
                     Search by Route:
                   </label>
@@ -177,7 +192,14 @@ const SearchPage = ({ user }) => {
                     </thead>
                     <tbody className="search__results-body">
                       {resultList.map((flight, i) => (
-                        <tr className="search__results-line" key={i}>
+                        <tr
+                          onClick={() => {
+                            setModal(true);
+                            setSelectedFlight(flight);
+                          }}
+                          className="search__results-line"
+                          key={i}
+                        >
                           <td className="search__results-text">
                             {flight.flight.number}
                           </td>

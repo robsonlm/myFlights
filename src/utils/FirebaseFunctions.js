@@ -53,16 +53,17 @@ export const handleEdit = async (id, col, payload, event) => {
   });
 };
 
-export const handleNew = async (col) => {
-  //await addDoc(collectionRef, payload);
-  const title = prompt("Enter title");
+export const handleNew = async (col, payload) => {
   const collectionRef = collection(db, col);
-  const payload = {
-    title: title,
-    description: "ahhh",
-    timestamp: Date.now(),
-  };
-  await addDoc(collectionRef, payload); //overwrite existing document
+  try {
+    await addDoc(collectionRef, payload);
+    toast.success("Flight added to the list", {
+      theme: "colored",
+    });
+  } catch (error) {
+    console.log(error.message);
+    toast.error(error.message);
+  }
 };
 
 //Auth Functions
@@ -145,7 +146,6 @@ export const googlelogin = () => {
         addUser(user.uid);
         window.location = `profile`;
       } else {
-        console.log("User already exists");
         window.location = `profile`;
       }
     })
