@@ -59,7 +59,9 @@ function App() {
         <Route
           path="/myflights"
           exact
-          render={(renderProps) => <MyFlightsPage {...renderProps} />}
+          render={(renderProps) => (
+            <MyFlightsPage user={user} {...renderProps} />
+          )}
         />
         <Route
           path="/pastflights"
