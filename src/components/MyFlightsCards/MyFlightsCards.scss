@@ -1,0 +1,97 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography";
+
+.myflights-card {
+  &__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 1px solid $color-line;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: $pad-margin-between;
+    padding: $pad-margin-between;
+
+    &:hover {
+      background-color: $color-background;
+    }
+  }
+
+  &__flight-name {
+    @include typo-h5;
+    padding: $pad-margin-between 0;
+    color: $color-title;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  &__info {
+    width: 50%;
+    padding: 1rem 1rem 0;
+  }
+
+  &__title {
+    @include typo-h6;
+    color: $color-primary;
+  }
+
+  &__text {
+    @include typo-linkxs;
+    color: $color-body;
+  }
+
+  &__name {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__delete {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+    padding: 1rem 1rem 2rem;
+  }
+  &__icon {
+    width: 1.5rem;
+  }
+}
+
+@include medium {
+  .myflights-card {
+    width: 100%;
+    padding: 1rem 0 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+
+    &__wrapper {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      border-bottom: none;
+      justify-content: space-between;
+      width: 100%;
+      align-items: center;
+    }
+
+    &__info {
+      padding: 0;
+      width: 20%;
+      text-align: left;
+    }
+
+    &__title {
+      display: none;
+    }
+  }
+}

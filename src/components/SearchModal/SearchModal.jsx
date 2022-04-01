@@ -12,7 +12,7 @@ const SearchModal = ({ closeModal, flight, departureDate, user }) => {
   const handleAdd = async () => {
     const payload = {
       uid: user.uid,
-      fight_number: flight.flight.number,
+      flight_number: flight.flight.number,
       dep_iata: flight.departure.iata,
       arr_iata: flight.arrival.iata,
       flight_date: departureDate,

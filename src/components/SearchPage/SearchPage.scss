@@ -3,19 +3,6 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography";
 
-// table,
-// td,
-// th {
-//   border-top: 1px solid;
-//   border-bottom: 1px solid;
-//   border-collapse: collapse;
-// }
-
-table {
-  border-collapse: separate;
-  border-spacing: 0;
-  min-width: 350px;
-}
 table tr th,
 table tr td {
   // border-right: 1px solid #bbb;
@@ -67,10 +54,14 @@ table tr:last-child td:last-child {
     display: flex;
     flex-direction: column;
     padding: $pad-margin-between $pad-margin;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
   }
 
   &__form {
     position: relative;
+    width: 100%;
     background-color: white;
     border-radius: 6px;
     display: flex;
@@ -147,10 +138,14 @@ table tr:last-child td:last-child {
   &__results {
     max-height: 40rem;
     width: 100%;
+    max-width: 30rem;
     overflow: scroll;
 
     &-table {
-      width: 5rem;
+      border-collapse: separate;
+      border-spacing: 0;
+      min-width: 100%;
+      max-width: 10rem;
     }
 
     &-title {
@@ -194,12 +189,11 @@ table tr:last-child td:last-child {
 
     &__right {
       height: 90%;
-      min-height: 5%;
       width: 100%;
       display: flex;
       flex-direction: column;
       padding: $pad-margin-between $pad-margin;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       flex-wrap: wrap;
     }

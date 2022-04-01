@@ -21,7 +21,7 @@ const SearchPage = ({ user }) => {
   const [departureDate, setDepartureDate] = useState("");
   const [resultList, setResultList] = useState([]);
   const [modal, setModal] = useState(false);
-  const [selectedFlight, setSelectedFlight] = useState(false);
+  const [selectedFlight, setSelectedFlight] = useState("");
 
   const loadOrigins = async (origin) => {
     setTextOrigin(origin);
