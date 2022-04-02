@@ -64,6 +64,10 @@
   &__icon {
     width: 1.5rem;
   }
+  &__headers-past-flights,
+  &__headers-myflights {
+    display: none;
+  }
 }
 
 @include medium {
@@ -82,6 +86,7 @@
       justify-content: space-between;
       width: 100%;
       align-items: center;
+      padding: $pad-margin-between;
     }
 
     &__info {
@@ -92,6 +97,44 @@
 
     &__title {
       display: none;
+    }
+
+    &__headers-myflights,
+    &__headers-past-flights {
+      display: flex;
+      height: 2.5rem;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    &__label-myflights {
+      display: flex;
+      height: 2.5rem;
+      background-color: $color-accent-1;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      justify-items: center;
+      border-radius: 10px;
+      padding: $pad-margin-between;
+    }
+
+    &__label-past-flights {
+      @extend .myflights-card__label-myflights;
+      background-color: $color-accent-4;
+    }
+
+    &__label-item {
+      display: flex;
+      align-items: center;
+      width: 11rem;
+    }
+
+    &__label-title {
+      @include typo-h6;
+      color: $color-off-white;
     }
   }
 }

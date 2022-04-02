@@ -81,8 +81,10 @@
     }
 
     &__right {
+      align-self: center;
       height: auto;
       width: 100%;
+      max-width: 60rem;
       display: flex;
       flex-direction: row;
       padding: $pad-margin-between $pad-margin;
@@ -118,52 +120,6 @@
     &__add-button {
       width: 12rem;
       height: 2.375rem;
-    }
-
-    &__main {
-      display: flex;
-      height: 2.5rem;
-      background-color: $color-accent-1;
-      align-items: center;
-      justify-content: space-around;
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    &__label {
-      display: flex;
-      height: 2.5rem;
-      background-color: $color-accent-1;
-      align-items: center;
-      justify-content: space-between;
-      width: 95%;
-      justify-items: center;
-
-      &-item {
-        display: flex;
-        align-items: center;
-        width: 11rem;
-      }
-
-      &-title {
-        @include typo-h6;
-        color: $color-off-white;
-
-        &:nth-child(3) {
-          margin: 0 5% 0 0;
-        }
-      }
-
-      &-action {
-        display: flex;
-        width: 16%;
-        justify-content: right;
-      }
-
-      &-img {
-        height: 1rem;
-        color: #5c667e;
-      }
     }
 
     &__cards {

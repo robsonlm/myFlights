@@ -1,0 +1,84 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography";
+
+.weather-card {
+  margin-top: $pad-margin-between;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  &__wrapper {
+    background-image: url("../../assets/images/weather-blur.jpeg");
+    background-size: cover;
+    border-radius: 20px;
+    box-shadow: 25px 25px 40px 0px rgba(0, 0, 0, 0.33);
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+    padding: $pad-margin-between;
+    width: 100%;
+    max-width: 30rem;
+  }
+
+  &__header {
+    &-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    &-city {
+      @include typo-h4;
+    }
+    &-date {
+      @include typo-h6;
+    }
+
+    &-conditions {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+      padding-bottom: $pad-margin;
+      border-bottom: 1px solid #fff;
+    }
+
+    &-temp {
+      @include typo-h1;
+    }
+
+    &-desc {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+    }
+  }
+
+  &__forecast {
+    padding-top: $pad-margin;
+    &-list {
+      display: flex;
+      flex-direction: row;
+
+      &-item {
+        width: 33.3333%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    &-day {
+      @include typo-h6;
+    }
+
+    &-img {
+      height: 3rem;
+    }
+    &-temperature {
+      @include typo-linkxss;
+    }
+  }
+}

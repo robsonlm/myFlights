@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./MyFlightsCards.scss";
 
-const MyFlightsCards = ({ flight }) => {
+const MyFlightsCards = ({ flight, page }) => {
   return (
     <section className="myflights-card">
       <div className="myflights-card__container">
@@ -10,6 +10,28 @@ const MyFlightsCards = ({ flight }) => {
           {flight.flight_name ||
             `My flight to ${flight.flight.arrival.airport}`}
         </h3>
+        <div className={`myflights-card__headers-${page}`}>
+          <div className={`myflights-card__label-${page}`}>
+            <div className="myflights-card__label-item">
+              <h3 className="myflights-card__label-title">Flight #</h3>
+            </div>
+            <div className="myflights-card__label-item">
+              <h3 className="myflights-card__label-title">Airline</h3>
+            </div>
+            <div className="myflights-card__label-item">
+              <h3 className="myflights-card__label-title">Origin</h3>
+            </div>
+            <div className="myflights-card__label-item">
+              <h3 className="myflights-card__label-title">Destination</h3>
+            </div>
+            <div className="myflights-card__label-item">
+              <h3 className="myflights-card__label-title">Date</h3>
+            </div>
+            <div className="myflights-card__label-item">
+              <h3 className="myflights-card__label-title">Time</h3>
+            </div>
+          </div>
+        </div>
         <div className="myflights-card__wrapper">
           <div className="myflights-card__info">
             <h3 className="myflights-card__title">Flight #</h3>
@@ -22,10 +44,8 @@ const MyFlightsCards = ({ flight }) => {
           </div>
 
           <div className="myflights-card__info">
-            <h3 className="myflights-card__title">Status</h3>
-            <p className="myflights-card__text">
-              {(flight.status && flight.status) || "Not Available"}
-            </p>
+            <h3 className="myflights-card__title">Airline</h3>
+            <p className="myflights-card__text">{flight.flight.airline.name}</p>
           </div>
 
           <div className="myflights-card__info">
@@ -47,7 +67,7 @@ const MyFlightsCards = ({ flight }) => {
             <p className="myflights-card__text">{flight.flight_date}</p>
           </div>
           <div className="myflights-card__info">
-            <h3 className="myflights-card__title">Date</h3>
+            <h3 className="myflights-card__title">Time</h3>
             <p className="myflights-card__text">
               {flight.flight.departure.time}
             </p>

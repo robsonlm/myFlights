@@ -6,3 +6,6 @@ export const GET_FUTUREFLIGHT_API_URL = (departure, arrival, number) =>
 
 export const GET_REALTIMEFLIGHT_API_URL = (departure, arrival, number, date) =>
   `http://api.aviationstack.com/v1/flights?access_key=${process.env.REACT_APP_AVIATIONSTACKAPI}&dep_iata=${departure}&arr_iata=${arrival}&flight_number=${number}&flight_date=${date}`;
+
+export const GET_WEATHER_API_URL = (iata) =>
+  `http://api.weatherapi.com/v1/forecast.json?key=${process.env.REACT_APP_WEATHERAPI}&q=iata:${iata}&days=3&aqi=no&alerts=no`;

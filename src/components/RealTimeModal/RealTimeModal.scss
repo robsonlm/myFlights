@@ -3,7 +3,7 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography";
 
-.search-modal {
+.realtime-modal {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 100px; /* Location of the box */
@@ -26,6 +26,8 @@
     border-radius: 10px;
     width: 80%;
     max-width: 50rem;
+    overflow: scroll;
+    height: 80%;
   }
 
   &__close {
@@ -98,7 +100,7 @@
 }
 
 @include medium {
-  .search-modal {
+  .realtime-modal {
     position: fixed;
   }
 }

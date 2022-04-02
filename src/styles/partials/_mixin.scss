@@ -86,3 +86,11 @@
   font-weight: 400;
   font-style: normal;
 }
+
+@mixin typo-linkxss {
+  font-family: "Axiforma";
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 400;
+  font-style: normal;
+}

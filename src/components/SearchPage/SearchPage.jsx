@@ -185,7 +185,7 @@ const SearchPage = ({ user }) => {
                     <thead className="search__results-head">
                       <tr className="search__results-line">
                         <th className="search__results-title">Flight#</th>
-                        <th className="search__results-title">Airline</th>
+                        <th className="search__results-title">Time:</th>
                         <th className="search__results-title">From:</th>
                         <th className="search__results-title">To:</th>
                       </tr>
@@ -201,10 +201,11 @@ const SearchPage = ({ user }) => {
                           key={i}
                         >
                           <td className="search__results-text">
+                            {flight.airline.iata}
                             {flight.flight.number}
                           </td>
                           <td className="search__results-text">
-                            {flight.airline.iata}
+                            {flight.departure.time}
                           </td>
                           <td className="search__results-text">
                             {flight.departure.iata}

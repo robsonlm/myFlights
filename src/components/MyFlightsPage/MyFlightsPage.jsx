@@ -63,6 +63,7 @@ const MyFlightsPage = ({ user }) => {
           } else if (a.flight_date < b.flight_date) {
             return -1;
           }
+          return 0;
         });
 
         setCurrentFlightList(sortedCurrent);
@@ -96,28 +97,7 @@ const MyFlightsPage = ({ user }) => {
                   </Link>
                 </div>
               </article>
-              <div className="myflights__main">
-                <div className="myflights__label">
-                  <div className="myflights__label-item">
-                    <h3 className="myflights__label-title">Flight #</h3>
-                  </div>
-                  <div className="myflights__label-item">
-                    <h3 className="myflights__label-title">Status</h3>
-                  </div>
-                  <div className="myflights__label-item">
-                    <h3 className="myflights__label-title">Origin</h3>
-                  </div>
-                  <div className="myflights__label-item">
-                    <h3 className="myflights__label-title">Destination</h3>
-                  </div>
-                  <div className="myflights__label-item">
-                    <h3 className="myflights__label-title">Date</h3>
-                  </div>
-                  <div className="myflights__label-item">
-                    <h3 className="myflights__label-title">Time</h3>
-                  </div>
-                </div>
-              </div>
+
               <div className="myflights__cards">
                 {currentFlightList ? (
                   currentFlightList.map((flight, i) => (
@@ -128,7 +108,7 @@ const MyFlightsPage = ({ user }) => {
                         setSelectedFlight(flight);
                       }}
                     >
-                      <MyFlightsCards flight={flight} />
+                      <MyFlightsCards flight={flight} page="myflights" />
                     </div>
                   ))
                 ) : (
