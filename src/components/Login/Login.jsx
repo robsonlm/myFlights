@@ -20,14 +20,16 @@ const Login = ({ user }) => {
     <>
       {user ? (
         <>
-          <div className="login__redirect">
-            <ToastContainer theme="colored" />
-
-            <Link to={`/profile`}>
-              <h1>Already logged in. Go to your profile.</h1>
-            </Link>
-            <button onClick={logout}>logout</button>
-          </div>
+          <section className="login">
+            <div className="profile__wrapper">
+              <div className="profile__left"></div>
+              <div className="profile__right">
+                <h2 className="profile__title">You are logged in already</h2>
+                <Link to="/profile">Take me to my profile page</Link>
+              </div>
+            </div>
+          </section>
+          }{" "}
         </>
       ) : (
         <section className="login">

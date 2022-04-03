@@ -60,6 +60,10 @@
   &__cards {
     display: flex;
     flex-direction: column;
+
+    &-item {
+      margin-bottom: $pad-margin-between;
+    }
   }
 }
 

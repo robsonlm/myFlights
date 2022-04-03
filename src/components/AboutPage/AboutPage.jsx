@@ -21,6 +21,7 @@ const About = () => {
                 className="about__link-wrapper"
                 href="https://linkedin.com/in/robson-maraia"
                 target="_blank"
+                rel="noreferrer"
               >
                 <img className="about__icon" src={linkedinPNG} alt="linkedin" />
               </a>
@@ -28,16 +29,18 @@ const About = () => {
                 className="about__link-wrapper"
                 href="https://github.com/robsonlm"
                 target="_blank"
+                rel="noreferrer"
               >
                 <img className="about__icon" src={githubPNG} alt="github" />
               </a>
             </div>
             <h2 className="about__design">
-              Design inspired by:{" "}
+              Design by:{" "}
               <a
                 href="https://www.figma.com/@Angelinalim"
                 className="about__text"
                 target="_blank"
+                rel="noreferrer"
               >
                 @Angelinalim
               </a>

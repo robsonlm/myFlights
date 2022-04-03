@@ -31,7 +31,10 @@ function App() {
 
   return (
     <div className="app">
-      <Route path="/" component={Header} />
+      <Route
+        path="/"
+        render={(renderProps) => <Header user={user} {...renderProps} />}
+      />
       <Switch>
         <Route path="/" exact>
           <Redirect to="/home" />
@@ -40,11 +43,6 @@ function App() {
           path="/home"
           exact
           render={(renderProps) => <HomePage user={user} {...renderProps} />}
-        />
-        <Route
-          path="/modal"
-          exact
-          render={(renderProps) => <SearchModal user={user} {...renderProps} />}
         />
         <Route
           path="/profile"

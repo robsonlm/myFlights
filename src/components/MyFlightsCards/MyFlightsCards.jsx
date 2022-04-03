@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./MyFlightsCards.scss";
+import deleteSVG from "../../assets/icons/delete-outline-24px.svg";
+import editSVG from "../../assets/icons/edit-24px.svg";
+import infoSVG from "../../assets/icons/info.svg";
+import { handleDelete } from "../../utils/FirebaseFunctions";
 
-const MyFlightsCards = ({ flight, page }) => {
+const MyFlightsCards = ({ flight, page, setModal, setSelectedFlight }) => {
   return (
     <section className="myflights-card">
       <div className="myflights-card__container">
@@ -72,6 +76,35 @@ const MyFlightsCards = ({ flight, page }) => {
               {flight.flight.departure.time}
             </p>
           </div>
+        </div>
+        <div className="myflights-card__action">
+          <div className="myflights-card__action-wrapper">
+            <img
+              className="myflights-card__icon"
+              src={deleteSVG}
+              alt="delete"
+              onClick={() => {
+                handleDelete(flight.id, "flights");
+                setTimeout(() => window.location.reload(), 500);
+              }}
+            />
+          </div>{" "}
+          {/* <div className="myflights-card__action-wrapper">
+            <img className="myflights-card__icon" src={editSVG} alt="edit" />
+          </div>{" "} */}
+          {page === "myflights" && (
+            <div className="myflights-card__action-wrapper">
+              <img
+                className="myflights-card__icon"
+                onClick={() => {
+                  setModal(true);
+                  setSelectedFlight(flight);
+                }}
+                src={infoSVG}
+                alt="edit"
+              />
+            </div>
+          )}
         </div>
       </div>
     </section>

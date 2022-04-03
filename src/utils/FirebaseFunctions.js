@@ -39,6 +39,7 @@ export const handleQueryDelete = async (col) => {
 
 export const handleDelete = async (id, col) => {
   //await setDoc(docRef, payload);
+  console.log(id, col);
   const docRef = doc(db, col, id);
   await deleteDoc(docRef); //overwrite existing document
 };
@@ -104,6 +105,7 @@ export const login = async (email, password, event) => {
 
 export const logout = async () => {
   await signOut(auth);
+  window.location = `home`;
 };
 
 export const sendPasswordReset = async (email) => {

@@ -97,14 +97,23 @@ const ProfilePage = ({ user }) => {
                   logout
                 </button>
               </form>
-              {/* <button onClick={() => logout(registerEmail)}>
-                reset password
-              </button> */}
             </div>
           </div>
         </section>
       ) : (
-        <>{<Link to="/login">You are not logged in</Link>} </>
+        <>
+          {
+            <section className="profile">
+              <div className="profile__wrapper">
+                <div className="profile__left"></div>
+                <div className="profile__right">
+                  <h2 className="profile__title">You are not logged in</h2>
+                  <Link to="/login">Take me to the login page</Link>
+                </div>
+              </div>
+            </section>
+          }
+        </>
       )}
     </div>
   );

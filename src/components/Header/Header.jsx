@@ -5,11 +5,12 @@ import { Link } from "react-router-dom";
 import whitelogoSVG from "../../assets/logos/myflight-white.svg";
 import blacklogoSVG from "../../assets/logos/myflight-black.svg";
 
-const Header = ({ ...renderProps }) => {
+const Header = ({ user, ...renderProps }) => {
+  console.log(renderProps);
   return (
     <section className="header">
       <div className="header__mobile">
-        <MobileNavigation />
+        <MobileNavigation user={user} />
       </div>
       {renderProps.location.pathname == "/signup" ||
       renderProps.location.pathname == "/login" ? (
@@ -46,17 +47,34 @@ const Header = ({ ...renderProps }) => {
               className="header__logo"
             />
           </Link>
-          <div className="header__desktop">
-            <Link id="home" className="header__link" to="/home">
-              Home
-            </Link>
-            <Link id="signin" className="header__link" to="/login">
-              Login
-            </Link>
-            <Link id="signup" className="header__link" to="/signup">
-              Sign Up
-            </Link>
-          </div>
+          {user ? (
+            <div className="header__desktop">
+              <Link id="home" className="header__link" to="/profile">
+                Profile
+              </Link>{" "}
+              <Link id="home" className="header__link" to="/search">
+                Search
+              </Link>{" "}
+              <Link id="home" className="header__link" to="/myflights">
+                MyFlights
+              </Link>{" "}
+              <Link id="home" className="header__link" to="/pastflights">
+                Past Flights
+              </Link>{" "}
+            </div>
+          ) : (
+            <div className="header__desktop">
+              <Link id="home" className="header__link" to="/about">
+                About
+              </Link>{" "}
+              <Link id="signin" className="header__link" to="/login">
+                Login
+              </Link>
+              <Link id="signup" className="header__link" to="/signup">
+                Sign Up
+              </Link>
+            </div>
+          )}
         </>
       )}
     </section>

@@ -20,7 +20,6 @@ import RealTimeModal from "../RealTimeModal/RealTimeModal";
 
 const MyFlightsPage = ({ user }) => {
   const [currentFlightList, setCurrentFlightList] = useState([]);
-  const [pastFlightList, setPastFlightList] = useState([]);
   const [modal, setModal] = useState(false);
   const [selectedFlight, setSelectedFlight] = useState("");
 
@@ -88,7 +87,7 @@ const MyFlightsPage = ({ user }) => {
             <div className="myflights__left"></div>
             <div className="myflights__right">
               <article className="myflights__header">
-                <h1 className="myflights__title">My Flights List</h1>
+                <h1 className="myflights__title">My Flights</h1>
                 <div className="myflights__search-wrapper">
                   <Link to="/search">
                     <button className="myflights__add-button">
@@ -101,14 +100,13 @@ const MyFlightsPage = ({ user }) => {
               <div className="myflights__cards">
                 {currentFlightList ? (
                   currentFlightList.map((flight, i) => (
-                    <div
-                      key={i}
-                      onClick={() => {
-                        setModal(true);
-                        setSelectedFlight(flight);
-                      }}
-                    >
-                      <MyFlightsCards flight={flight} page="myflights" />
+                    <div className="myflights__cards-item" key={i}>
+                      <MyFlightsCards
+                        flight={flight}
+                        setModal={setModal}
+                        setSelectedFlight={setSelectedFlight}
+                        page="myflights"
+                      />
                     </div>
                   ))
                 ) : (
@@ -119,7 +117,19 @@ const MyFlightsPage = ({ user }) => {
           </div>
         </section>
       ) : (
-        <>{<Link to="/login">Loading!!! Back to login page.</Link>} </>
+        <>
+          {
+            <section className="myflights">
+              <div className="profile__wrapper">
+                <div className="myflights__left"></div>
+                <div className="profile__right">
+                  <h2 className="profile__title">You are not logged in</h2>
+                  <Link to="/login">Take me to the login page</Link>
+                </div>
+              </div>
+            </section>
+          }{" "}
+        </>
       )}
     </div>
   );

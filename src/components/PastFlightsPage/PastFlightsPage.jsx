@@ -63,7 +63,7 @@ const PastFlightsPage = ({ user }) => {
             <div className="past-flights__left"></div>
             <div className="past-flights__right">
               <article className="past-flights__header">
-                <h1 className="past-flights__title">My Past Flights List</h1>
+                <h1 className="past-flights__title">Past Flights List</h1>
                 <div className="past-flights__search-wrapper">
                   <Link to="/search">
                     <button className="past-flights__add-button">
@@ -76,7 +76,7 @@ const PastFlightsPage = ({ user }) => {
               <div className="past-flights__cards">
                 {pastFlightList ? (
                   pastFlightList.map((flight, i) => (
-                    <div key={i}>
+                    <div className="past-flights__cards-item" key={i}>
                       <MyFlightsCards flight={flight} page="past-flights" />
                     </div>
                   ))
@@ -88,7 +88,19 @@ const PastFlightsPage = ({ user }) => {
           </div>
         </section>
       ) : (
-        <>{<Link to="/login">Loading!!! Back to login page.</Link>} </>
+        <>
+          {
+            <section className="past-flights">
+              <div className="profile__wrapper">
+                <div className="past-flights__left"></div>
+                <div className="profile__right">
+                  <h2 className="profile__title">You are not logged in</h2>
+                  <Link to="/login">Take me to the login page</Link>
+                </div>
+              </div>
+            </section>
+          }{" "}
+        </>
       )}
     </div>
   );

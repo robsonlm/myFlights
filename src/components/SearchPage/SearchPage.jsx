@@ -224,7 +224,19 @@ const SearchPage = ({ user }) => {
           </div>
         </section>
       ) : (
-        <>{<Link to="/login">Loading!!! Back to login page.</Link>} </>
+        <>
+          {
+            <section className="search-flights">
+              <div className="profile__wrapper">
+                <div className="search__left"></div>
+                <div className="profile__right">
+                  <h2 className="profile__title">You are not logged in</h2>
+                  <Link to="/login">Take me to the login page</Link>
+                </div>
+              </div>
+            </section>
+          }{" "}
+        </>
       )}
     </div>
   );
