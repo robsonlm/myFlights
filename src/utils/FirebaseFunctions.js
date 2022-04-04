@@ -13,7 +13,6 @@ import {
   signInWithEmailAndPassword,
   signOut,
   GoogleAuthProvider,
-  getAuth,
   signInWithPopup,
   getAdditionalUserInfo,
   sendPasswordResetEmail,
@@ -97,6 +96,7 @@ export const login = async (email, password, event) => {
   event.preventDefault();
   try {
     const user = await signInWithEmailAndPassword(auth, email, password);
+    return user;
   } catch (error) {
     console.log(error.message);
     toast.error(error.message);
@@ -138,8 +138,9 @@ export const googlelogin = () => {
   signInWithPopup(auth, provider)
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
+      //const credential = GoogleAuthProvider.credentialFromResult(result);
+      // const token = credential.accessToken;
+
       // The signed-in user info.
       const user = result.user;
       // ...
@@ -160,6 +161,7 @@ export const googlelogin = () => {
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
       // ...
+      toast.error(errorCode, errorMessage, email, credential);
     });
 };
 

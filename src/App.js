@@ -1,13 +1,5 @@
-import { collection, onSnapshot, getDoc } from "@firebase/firestore";
 import { useState } from "react";
 import "./App.scss";
-import db from "./utils/firebaseInit";
-import {
-  handleDelete,
-  handleEdit,
-  handleNew,
-  handleQueryDelete,
-} from "./utils/FirebaseFunctions";
 import { Redirect, Route, Switch } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
 import ProfilePage from "./components/ProfilePage/ProfilePage";
@@ -20,7 +12,6 @@ import Signup from "./components/Signup/Signup";
 import { auth } from "./utils/firebaseInit";
 import { onAuthStateChanged } from "firebase/auth";
 import Login from "./components/Login/Login";
-import SearchModal from "./components/SearchModal/SearchModal";
 
 function App() {
   const [user, setUser] = useState({});

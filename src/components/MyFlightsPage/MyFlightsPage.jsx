@@ -1,21 +1,10 @@
 import React, { useState, useEffect } from "react";
 import MyFlightsCards from "../MyFlightsCards/MyFlightsCards";
-import {
-  onSnapshot,
-  doc,
-  collection,
-  query,
-  where,
-  getDocs,
-} from "@firebase/firestore";
+import { collection, query, where, getDocs } from "@firebase/firestore";
 import db from "../../utils/firebaseInit";
 import { Link } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./MyFlightsPage.scss";
-import axios from "axios";
-import { GET_REALTIMEFLIGHT_API_URL } from "../../api/endpoint";
-
 import RealTimeModal from "../RealTimeModal/RealTimeModal";
 
 const MyFlightsPage = ({ user }) => {
@@ -23,7 +12,6 @@ const MyFlightsPage = ({ user }) => {
   const [modal, setModal] = useState(false);
   const [selectedFlight, setSelectedFlight] = useState("");
 
-  const date = new Date();
   const formatDate = (date) => {
     let d = new Date(date),
       month = "" + (d.getMonth() + 1),
@@ -36,8 +24,6 @@ const MyFlightsPage = ({ user }) => {
     return [year, month, day].join("-");
   };
 
-  const currentDate = formatDate(date);
-
   useEffect(() => {
     const getCurrentFlightList = async () => {
       if (!!user?.uid) {
@@ -49,11 +35,13 @@ const MyFlightsPage = ({ user }) => {
           id: doc.id,
         }));
 
+        const date = new Date();
+        const currentDate = formatDate(date);
+
+        console.log(currentDate);
+
         const current = await results.filter(
           (flight) => flight.flight_date >= currentDate
-        );
-        const past = await results.filter(
-          (flight) => flight.flight_date < currentDate
         );
 
         const sortedCurrent = current.sort((a, b) => {

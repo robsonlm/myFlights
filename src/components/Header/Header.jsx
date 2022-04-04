@@ -12,8 +12,8 @@ const Header = ({ user, ...renderProps }) => {
       <div className="header__mobile">
         <MobileNavigation user={user} />
       </div>
-      {renderProps.location.pathname == "/signup" ||
-      renderProps.location.pathname == "/login" ? (
+      {renderProps.location.pathname === "/signup" ||
+      renderProps.location.pathname === "/login" ? (
         <>
           <Link to="/">
             <img
@@ -22,7 +22,7 @@ const Header = ({ user, ...renderProps }) => {
               className="header__logo"
             />
           </Link>
-          {renderProps.location.pathname == "/signup" ? (
+          {renderProps.location.pathname === "/signup" ? (
             <div className="header__desktop">
               <Link className="header__signup-link" to="/login">
                 Already have an account?{" "}

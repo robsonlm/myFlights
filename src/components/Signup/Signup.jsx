@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { register, logout, googlelogin } from "../../utils/FirebaseFunctions";
+import { register, googlelogin } from "../../utils/FirebaseFunctions";
 import { Link } from "react-router-dom";
 import "./Signup.scss";
 import signUpSVG from "../../assets/images/signup.svg";

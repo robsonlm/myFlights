@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   login,
-  logout,
   googlelogin,
   sendPasswordReset,
 } from "../../utils/FirebaseFunctions";
@@ -29,7 +28,6 @@ const Login = ({ user }) => {
               </div>
             </div>
           </section>
-          }{" "}
         </>
       ) : (
         <section className="login">

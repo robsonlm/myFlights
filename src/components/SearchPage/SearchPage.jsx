@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { onSnapshot, doc } from "@firebase/firestore";
-import db from "../../utils/firebaseInit";
 import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -28,7 +26,6 @@ const SearchPage = ({ user }) => {
     if (origin.length > 3) {
       const response = await axios.get(GET_AUTOCOMPLETE_API_URL(origin));
       setOrigin(response.data.airportsByCities);
-      console.log(response.data.airportsByCities);
     }
   };
 
@@ -37,7 +34,6 @@ const SearchPage = ({ user }) => {
     if (destination.length > 3) {
       const response = await axios.get(GET_AUTOCOMPLETE_API_URL(destination));
       setDestination(response.data.airportsByCities);
-      console.log(response.data.airportsByCities);
     }
   };
 

@@ -1,8 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./MyFlightsCards.scss";
 import deleteSVG from "../../assets/icons/delete-outline-24px.svg";
-import editSVG from "../../assets/icons/edit-24px.svg";
 import infoSVG from "../../assets/icons/info.svg";
 import { handleDelete } from "../../utils/FirebaseFunctions";
 

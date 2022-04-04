@@ -9,7 +9,6 @@ import "./PastFlightsPage.scss";
 const PastFlightsPage = ({ user }) => {
   const [pastFlightList, setPastFlightList] = useState([]);
 
-  const date = new Date();
   const formatDate = (date) => {
     let d = new Date(date),
       month = "" + (d.getMonth() + 1),
@@ -21,8 +20,6 @@ const PastFlightsPage = ({ user }) => {
 
     return [year, month, day].join("-");
   };
-
-  const currentDate = formatDate(date);
 
   console.log(user);
 
@@ -37,16 +34,20 @@ const PastFlightsPage = ({ user }) => {
           id: doc.id,
         }));
 
+        const date = new Date();
+        const currentDate = formatDate(date);
+
         const past = await results.filter(
           (flight) => flight.flight_date < currentDate
         );
 
         const sortedPast = past.sort((a, b) => {
           if (a.flight_date > b.flight_date) {
-            return 1;
-          } else if (a.flight_date < b.flight_date) {
             return -1;
+          } else if (a.flight_date < b.flight_date) {
+            return 1;
           }
+          return 0;
         });
 
         setPastFlightList(sortedPast);

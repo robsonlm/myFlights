@@ -1,7 +1,7 @@
 import { elastic as Menu } from "react-burger-menu";
 import "./MobileNavigation.scss";
 import { Link } from "react-router-dom";
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 
 const MobileNavigation = ({ user }) => {
   const [isOpen, setOpen] = useState(false);
