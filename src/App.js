@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.scss";
 import { Redirect, Route, Switch } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
@@ -12,13 +12,24 @@ import Signup from "./components/Signup/Signup";
 import { auth } from "./utils/firebaseInit";
 import { onAuthStateChanged } from "firebase/auth";
 import Login from "./components/Login/Login";
+import { onSnapshot, doc } from "@firebase/firestore";
+import db from "./utils/firebaseInit";
 
 function App() {
   const [user, setUser] = useState({});
+  const [userProfile, setUserProfile] = useState({});
 
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
   });
+
+  useEffect(() => {
+    if (!!user?.uid) {
+      onSnapshot(doc(db, "users", user.uid), (snapshot) => {
+        setUserProfile(snapshot.data());
+      });
+    }
+  }, [user]);
 
   return (
     <div className="app">
@@ -33,12 +44,21 @@ function App() {
         <Route
           path="/home"
           exact
-          render={(renderProps) => <HomePage user={user} {...renderProps} />}
+          render={(renderProps) => (
+            <HomePage user={user} userProfile={userProfile} {...renderProps} />
+          )}
         />
         <Route
           path="/profile"
           exact
-          render={(renderProps) => <ProfilePage user={user} {...renderProps} />}
+          render={(renderProps) => (
+            <ProfilePage
+              user={user}
+              userProfile={userProfile}
+              setUserProfile={setUserProfile}
+              {...renderProps}
+            />
+          )}
         />
         <Route
           path="/search"

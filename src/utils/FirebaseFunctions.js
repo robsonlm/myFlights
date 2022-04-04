@@ -96,6 +96,7 @@ export const login = async (email, password, event) => {
   event.preventDefault();
   try {
     const user = await signInWithEmailAndPassword(auth, email, password);
+    window.location = `home`;
     return user;
   } catch (error) {
     console.log(error.message);
@@ -149,7 +150,7 @@ export const googlelogin = () => {
         addUser(user.uid);
         window.location = `profile`;
       } else {
-        window.location = `profile`;
+        window.location = `home`;
       }
     })
     .catch((error) => {

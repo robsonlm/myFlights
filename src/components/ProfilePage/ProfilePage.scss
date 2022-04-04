@@ -96,10 +96,10 @@
       display: flex;
       flex-direction: column;
       padding: $pad-margin-between $pad-margin;
-      justify-content: center;
       align-items: center;
       flex-wrap: wrap;
       overflow: scroll;
+      justify-content: flex-start;
     }
 
     &__form {

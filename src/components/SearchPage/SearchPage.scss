@@ -67,6 +67,12 @@ table tr:last-child td:last-child {
     display: flex;
     flex-direction: column;
     position: relative;
+
+    &-label {
+      align-self: center;
+      padding-bottom: $pad-margin-between;
+      @include typo-h4;
+    }
   }
 
   &__select {
@@ -86,6 +92,11 @@ table tr:last-child td:last-child {
     background-color: $color-input-background;
     margin-bottom: $pad-margin-between;
     width: 100%;
+
+    &--error {
+      @extend .search__input;
+      border: 2px solid $color-error;
+    }
 
     &-box-origin {
       position: absolute;
@@ -122,6 +133,7 @@ table tr:last-child td:last-child {
   }
 
   &__button {
+    position: relative;
     border: 0 solid;
     height: 3rem;
     border-radius: 6px;
@@ -130,6 +142,13 @@ table tr:last-child td:last-child {
     font-weight: 400;
     width: 100%;
     margin-bottom: $pad-margin-between;
+
+    &-loading {
+      position: absolute;
+      width: 2.5rem;
+      right: 4rem;
+      top: 0.3rem;
+    }
 
     &:hover {
       background-color: $color-accent-1;

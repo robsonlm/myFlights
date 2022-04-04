@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./SearchPage.scss";
 import axios from "axios";
@@ -9,9 +9,11 @@ import {
   GET_FUTUREFLIGHT_API_URL,
 } from "../../api/endpoint";
 import SearchModal from "../SearchModal/SearchModal";
+import loadingGIF from "../../assets/icons/loading.gif";
 
 const SearchPage = ({ user }) => {
   const [origin, setOrigin] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [destination, setDestination] = useState([]);
   const [textOrigin, setTextOrigin] = useState("");
   const [textDestination, setTextDestination] = useState("");
@@ -39,15 +41,41 @@ const SearchPage = ({ user }) => {
 
   const searchFlight = async (departure, arrival, number, event) => {
     event.preventDefault();
+    if (!textOrigin) {
+      toast.error("Origin should not be empty");
+      event.target.origin.className = "search__input--error";
+      return;
+    }
+    event.target.origin.className = "search__input";
 
-    console.log(departure, arrival, number);
-    const response = await axios.get(
-      GET_FUTUREFLIGHT_API_URL(departure, arrival, number)
-    );
+    if (!departureDate) {
+      toast.error("Date is required");
+      event.target.date.className = "search__input--error";
+      return;
+    }
 
-    console.log(response.data.data);
-    setResultList(response.data.data);
+    event.target.date.className = "search__input";
+
+    setIsLoading(true);
+    try {
+      const response = await axios.get(
+        GET_FUTUREFLIGHT_API_URL(departure, arrival, number)
+      );
+      if (response.data.data.length === 0) {
+        setResultList([
+          {
+            empty: "No flights found! Please check your entry and try again!",
+          },
+        ]);
+      } else {
+        setResultList(response.data.data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+    setIsLoading(false);
   };
+  console.log(resultList);
 
   let showModal = <></>;
   if (modal) {
@@ -83,12 +111,11 @@ const SearchPage = ({ user }) => {
                     );
                   }}
                 >
-                  <label className="profile__form-label" htmlFor="firstName">
+                  <label className="search__form-label" htmlFor="firstName">
                     Search by Route:
                   </label>
                   <input
                     className="search__input"
-                    required="required"
                     type="text"
                     name="origin"
                     placeholder="Origin city"
@@ -151,25 +178,30 @@ const SearchPage = ({ user }) => {
                     className="search__input"
                     type="number"
                     name="fnumber"
-                    placeholder="Fligth #"
+                    placeholder="Flight #"
                     onChange={(e) => setFlight(e.target.value)}
                   ></input>
                   <input
                     className="search__input"
                     type="date"
-                    name="fnumber"
-                    placeholder="Fligth #"
-                    required="required"
+                    name="date"
                     value={departureDate}
                     onChange={(e) => setDepartureDate(e.target.value)}
                   />
 
                   <button className="search__button" type="submit">
-                    Search
+                    Search{" "}
+                    {!!isLoading && (
+                      <img
+                        className="search__button-loading"
+                        src={loadingGIF}
+                        alt="loading results"
+                      ></img>
+                    )}
                   </button>
                 </form>
               )}
-              {resultList[0] && (
+              {resultList[0]?.airline && !isLoading && (
                 <section className="search__results">
                   <button
                     className="search__button"
@@ -214,6 +246,19 @@ const SearchPage = ({ user }) => {
                       ))}
                     </tbody>
                   </table>
+                </section>
+              )}{" "}
+              {!isLoading && resultList[0]?.empty && (
+                <section className="search__results">
+                  <button
+                    className="search__button"
+                    onClick={() => setResultList([])}
+                  >
+                    Back to Search
+                  </button>
+                  <p className="search__results-text">
+                    Sorry! we coundn't find any route for your query.
+                  </p>
                 </section>
               )}
             </div>

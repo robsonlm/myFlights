@@ -1,23 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { onSnapshot, doc } from "@firebase/firestore";
-import db from "../../utils/firebaseInit";
+import React from "react";
+
 import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { handleEdit, logout } from "../../utils/FirebaseFunctions";
 import "./ProfilePage.scss";
 
-const ProfilePage = ({ user }) => {
+const ProfilePage = ({ user, setUserProfile, userProfile }) => {
   //onSnapshot will update data automatically
-  const [userProfile, setUserProfile] = useState({});
-
-  useEffect(() => {
-    if (!!user?.uid) {
-      onSnapshot(doc(db, "users", user.uid), (snapshot) => {
-        setUserProfile(snapshot.data());
-      });
-    }
-  }, [user]);
 
   return (
     <div>

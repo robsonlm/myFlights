@@ -27,6 +27,13 @@
       display: none;
     }
 
+    &__logo {
+      position: absolute;
+      height: 3.75rem;
+      left: 3.438rem;
+      top: 2.5rem;
+    }
+
     &__desktop {
       display: flex;
       position: absolute;
