@@ -33,7 +33,7 @@ const WeatherCard = ({ weatherInfo }) => {
                   <div className="weather-card__header-desc">
                     <img
                       className="weather-card__header-image"
-                      src={`http:${weatherInfo.current.condition.icon}`}
+                      src={`https:${weatherInfo.current.condition.icon}`}
                       alt="condition"
                     />
                     <span className="weather-card__header-text">
@@ -48,7 +48,7 @@ const WeatherCard = ({ weatherInfo }) => {
                     <h3 className="weather-card__forecast-day">Today</h3>
                     <img
                       className="weather-card__forecast-img"
-                      src={`http:${weatherInfo.forecast.forecastday[0].day.condition.icon}`}
+                      src={`https:${weatherInfo.forecast.forecastday[0].day.condition.icon}`}
                       alt="today condition"
                     ></img>
                     <p className="weather-card__forecast-temperature">
@@ -60,7 +60,7 @@ const WeatherCard = ({ weatherInfo }) => {
                     <h3 className="weather-card__forecast-day">Tomorrow</h3>
                     <img
                       className="weather-card__forecast-img"
-                      src={`http:${weatherInfo.forecast.forecastday[1].day.condition.icon}`}
+                      src={`https:${weatherInfo.forecast.forecastday[1].day.condition.icon}`}
                       alt="tomorrow condition"
                     ></img>
                     <p className="weather-card__forecast-temperature">
@@ -73,7 +73,7 @@ const WeatherCard = ({ weatherInfo }) => {
                     <h3 className="weather-card__forecast-day">Next day</h3>
                     <img
                       className="weather-card__forecast-img"
-                      src={`http:${weatherInfo.forecast.forecastday[1].day.condition.icon}`}
+                      src={`https:${weatherInfo.forecast.forecastday[1].day.condition.icon}`}
                       alt="next day condition"
                     ></img>
                     <p className="weather-card__forecast-temperature">
