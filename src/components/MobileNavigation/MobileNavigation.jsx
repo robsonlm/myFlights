@@ -27,6 +27,14 @@ const MobileNavigation = ({ user }) => {
             onClose={handleIsOpen}
           >
             <Link
+              id="profile"
+              className="menu-item mobile-navigation__link"
+              to="/profile"
+              onClick={closeSideBar}
+            >
+              PROFILE
+            </Link>
+            <Link
               id="search"
               className="menu-item mobile-navigation__link"
               to="/search"

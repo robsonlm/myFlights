@@ -112,6 +112,7 @@ table tr:last-child td:last-child {
     &-option {
       @include typo-linkxs;
       background-color: $color-input-background;
+      z-index: 999;
 
       &:hover {
         background-color: $color-placeholder;
@@ -182,7 +183,7 @@ table tr:last-child td:last-child {
     &__left {
       display: flex;
       height: 9rem;
-      min-height: 5rem;
+      min-height: 9rem;
       background-color: $color-accent-2;
       align-items: center;
     }
@@ -196,6 +197,7 @@ table tr:last-child td:last-child {
       justify-content: flex-start;
       align-items: center;
       flex-wrap: wrap;
+      overflow: scroll;
     }
 
     &__form {
