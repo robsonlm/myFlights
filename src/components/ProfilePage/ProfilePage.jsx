@@ -1,16 +1,25 @@
-import React from "react";
-
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { handleEdit, logout } from "../../utils/FirebaseFunctions";
+import FrequentFlyerModal from "../FrequentFlyerModal/FrequentFlyerModal";
 import "./ProfilePage.scss";
 
 const ProfilePage = ({ user, setUserProfile, userProfile }) => {
+  const [modal, setModal] = useState(false);
   //onSnapshot will update data automatically
+
+  let showModal = <></>;
+  if (modal) {
+    showModal = (
+      <FrequentFlyerModal userProfile={userProfile} closeModal={setModal} />
+    );
+  }
 
   return (
     <div>
+      {showModal}
       {user?.uid ? (
         <section className="profile">
           <ToastContainer theme="colored" />
@@ -79,6 +88,15 @@ const ProfilePage = ({ user, setUserProfile, userProfile }) => {
                   }
                 >
                   Update
+                </button>
+                <button
+                  className="profile__form-button"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setModal(true);
+                  }}
+                >
+                  Frequent Flyer List
                 </button>
                 <button
                   className="profile__form-button-logout"

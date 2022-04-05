@@ -2,6 +2,7 @@ import { elastic as Menu } from "react-burger-menu";
 import "./MobileNavigation.scss";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
+import { logout } from "../../utils/FirebaseFunctions";
 
 const MobileNavigation = ({ user }) => {
   const [isOpen, setOpen] = useState(false);
@@ -64,6 +65,14 @@ const MobileNavigation = ({ user }) => {
               onClick={closeSideBar}
             >
               ABOUT
+            </Link>
+            <Link
+              id="logout"
+              className="menu-item mobile-navigation__link"
+              to="/home"
+              onClick={logout}
+            >
+              LOGOUT
             </Link>
           </Menu>
         </>

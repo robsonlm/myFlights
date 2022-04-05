@@ -4,6 +4,8 @@ import "./Header.scss";
 import { Link } from "react-router-dom";
 import whitelogoSVG from "../../assets/logos/myflight-white.svg";
 import blacklogoSVG from "../../assets/logos/myflight-black.svg";
+import logoutPNG from "../../assets/icons/logout.png";
+import { logout } from "../../utils/FirebaseFunctions";
 
 const Header = ({ user, ...renderProps }) => {
   return (
@@ -48,18 +50,24 @@ const Header = ({ user, ...renderProps }) => {
           </Link>
           {user ? (
             <div className="header__desktop">
-              <Link id="home" className="header__link" to="/profile">
+              <Link id="profile" className="header__link" to="/profile">
                 Profile
               </Link>{" "}
-              <Link id="home" className="header__link" to="/search">
+              <Link id="Search" className="header__link" to="/search">
                 Search
               </Link>{" "}
-              <Link id="home" className="header__link" to="/myflights">
+              <Link id="myflights" className="header__link" to="/myflights">
                 MyFlights
               </Link>{" "}
-              <Link id="home" className="header__link" to="/pastflights">
+              <Link id="pastflights" className="header__link" to="/pastflights">
                 Past Flights
               </Link>{" "}
+              <img
+                src={logoutPNG}
+                alt="logout"
+                className="header__logout"
+                onClick={logout}
+              />
             </div>
           ) : (
             <div className="header__desktop">

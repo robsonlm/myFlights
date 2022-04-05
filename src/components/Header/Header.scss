@@ -40,7 +40,8 @@
       justify-content: space-between;
       right: 2.938rem;
       top: 3.5rem;
-      width: 25rem;
+      width: 28rem;
+      height: 3rem;
       align-items: center;
     }
 
@@ -53,7 +54,15 @@
         font-weight: 800;
       }
     }
+    &__logout {
+      width: 1.5rem;
+      position: relative;
+      top: -0.1rem;
 
+      &:hover {
+        cursor: pointer;
+      }
+    }
     &__signup-link {
       position: absolute;
       width: 18rem;

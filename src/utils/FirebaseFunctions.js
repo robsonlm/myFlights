@@ -7,6 +7,9 @@ import {
   query,
   where,
   getDocs,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
 } from "@firebase/firestore";
 import {
   createUserWithEmailAndPassword,
@@ -66,22 +69,49 @@ export const handleNew = async (col, payload) => {
   }
 };
 
+export const addFFNumber = async (col, payload, id) => {
+  const docRef = doc(db, col, id);
+
+  try {
+    await updateDoc(docRef, { frequentFlyer: arrayUnion(payload) });
+    toast.success("Number added to the list", {
+      theme: "colored",
+    });
+  } catch (error) {
+    console.log(error.message);
+    toast.error(error.message);
+  }
+};
+
+export const removeFFNumber = async (col, payload, id) => {
+  const docRef = doc(db, col, id);
+
+  try {
+    await updateDoc(docRef, { frequentFlyer: arrayRemove(payload) });
+    toast.success("Number removed from the list", {
+      theme: "colored",
+    });
+  } catch (error) {
+    console.log(error.message);
+    toast.error(error.message);
+  }
+};
+
 //Auth Functions
 
 const provider = new GoogleAuthProvider();
 
-export const register = async (firstname, lastname, email, password, event) => {
+export const register = async (firstName, lastName, email, password, event) => {
   event.preventDefault();
   try {
     const result = await createUserWithEmailAndPassword(auth, email, password);
     const userUid = result.user.uid;
     const data = {
       useruid: userUid,
-      firstname,
-      lastname,
-      calendarEvents: [],
+      firstName,
+      lastName,
+      frequentFlyer: [{ airline: "", number: "" }],
     };
-    console.log(data);
     await setDoc(doc(db, "users", userUid), data);
     if (userUid) {
       window.location = `profile`; //After successful login, user will be redirected to home.html
@@ -123,16 +153,16 @@ export const sendPasswordReset = async (email) => {
   }
 };
 
-const addUser = async (userId) => {
-  console.log(userId);
-  const userRef = doc(db, "users", userId);
+const addUser = async (userUid) => {
+  console.log(userUid);
+  const userRef = doc(db, "users", userUid);
   const data = {
-    useruid: userId,
-    firstname: "",
-    lastname: "",
-    calendarEvents: [],
+    useruid: userUid,
+    firstName: "",
+    lastName: "",
+    frequentFlyer: [{ airline: "", number: "" }],
   };
-  return await setDoc(userRef, data);
+  await setDoc(userRef, data);
 };
 
 export const googlelogin = () => {
@@ -147,8 +177,7 @@ export const googlelogin = () => {
       // ...
       const { isNewUser } = getAdditionalUserInfo(result);
       if (isNewUser) {
-        addUser(user.uid);
-        window.location = `profile`;
+        addUser(user.uid).then(() => (window.location = `profile`));
       } else {
         window.location = `home`;
       }
