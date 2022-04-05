@@ -14,7 +14,6 @@ const MobileNavigation = ({ user }) => {
     setOpen(false);
   };
 
-  console.log(user);
   // NOTE: You also need to provide styles, see https://github.com/negomi/react-burger-menu#styling
   return (
     <>

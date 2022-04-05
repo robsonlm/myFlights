@@ -19,9 +19,6 @@ const RealTimeModal = ({ closeModal, selectedFlight }) => {
     return newDate;
   }
 
-  console.log(selectedFlight);
-  console.log(flightInfo);
-
   useEffect(() => {
     const getRealTimeInfo = async () => {
       if (!!selectedFlight?.flight_number) {

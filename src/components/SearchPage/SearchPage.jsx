@@ -75,7 +75,6 @@ const SearchPage = ({ user }) => {
     }
     setIsLoading(false);
   };
-  console.log(resultList);
 
   let showModal = <></>;
   if (modal) {

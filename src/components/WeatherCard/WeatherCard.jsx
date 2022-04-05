@@ -6,8 +6,6 @@ const WeatherCard = ({ weatherInfo }) => {
     return oldDate.toString().split("-").reverse().join("/");
   }
 
-  console.log(weatherInfo.current);
-
   return (
     <div>
       {weatherInfo.current ? (

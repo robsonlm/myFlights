@@ -6,7 +6,6 @@ import whitelogoSVG from "../../assets/logos/myflight-white.svg";
 import blacklogoSVG from "../../assets/logos/myflight-black.svg";
 
 const Header = ({ user, ...renderProps }) => {
-  console.log(renderProps);
   return (
     <section className="header">
       <div className="header__mobile">

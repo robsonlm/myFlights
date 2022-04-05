@@ -21,8 +21,6 @@ const PastFlightsPage = ({ user }) => {
     return [year, month, day].join("-");
   };
 
-  console.log(user);
-
   useEffect(() => {
     const getCurrentFlightList = async () => {
       if (!!user?.uid) {

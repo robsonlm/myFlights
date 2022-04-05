@@ -2,7 +2,6 @@ import React from "react";
 import "./HomePage.scss";
 
 const HomePage = ({ userProfile }) => {
-  console.log(userProfile);
   return (
     <section className="home">
       <div className="home__wrapper">

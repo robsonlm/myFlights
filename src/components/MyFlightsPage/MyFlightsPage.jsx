@@ -38,8 +38,6 @@ const MyFlightsPage = ({ user }) => {
         const date = new Date();
         const currentDate = formatDate(date);
 
-        console.log(currentDate);
-
         const current = await results.filter(
           (flight) => flight.flight_date >= currentDate
         );
